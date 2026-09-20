@@ -11,7 +11,9 @@ class CheckRole
     public function handle(Request $request, Closure $next, string ...$roles): Response
     {
         if (! $request->user() || ! in_array($request->user()->role, $roles)) {
-            abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+            return response()->view('errors.403', [
+                'message' => 'Akses Ditolak! Anda tidak memiliki izin untuk membuka halaman ini.'
+            ], 403);
         }
         
         return $next($request);

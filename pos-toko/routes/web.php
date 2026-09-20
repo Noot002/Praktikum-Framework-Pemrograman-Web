@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\PosController;
+use App\Http\Controllers\UserController;
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
@@ -20,7 +21,7 @@ Route::get('/about', function () {
 Route::get('/login', [LoginController::class, 'create'])
     ->middleware('guest')
     ->name('login');
-Route::get('/login', [LoginController::class, 'store'])
+Route::post('/login', [LoginController::class, 'store'])
     ->middleware('guest')
     ->name('login.store');
 Route::post('logout', [LoginController::class, 'destroy'])
@@ -31,6 +32,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
     Route::get('/reports/sales', [ReportController::class, 'sales'])->name('report.sales');
+    
+    Route::resource('users', UserController::class);
 });
 
 Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
