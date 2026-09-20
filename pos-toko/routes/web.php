@@ -40,3 +40,9 @@ Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
     Route::get('/pos', [PosController::class, 'index'])->name('pos.index');
     Route::post('/pos', [PosController::class, 'store'])->name('pos.store');
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/pos', [PosController::class, 'index'])->name('pos.index');
+    Route::get('/pos/history', [PosController::class, 'history'])->name('pos.history');
+});

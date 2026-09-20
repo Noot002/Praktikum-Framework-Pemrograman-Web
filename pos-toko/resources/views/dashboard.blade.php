@@ -12,3 +12,17 @@
         </div>
     </div>
 </x-app-layout>
+
+<x-badge :stock="$product->stock" />
+
+<x-badge :stock="0" />
+<x-badge :stock="5" />
+<x-badge :stock="25" />
+
+<x-badge status="Habis" />
+<x-badge status="Menipis" />
+<x-badge status="Aman" />
+
+<x-badge :stock="$product->stock" class="shadow-sm uppercase">
+    Stok Khusus: {{ $product->stock }}
+</x-badge>

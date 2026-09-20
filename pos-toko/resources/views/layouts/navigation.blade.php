@@ -8,31 +8,40 @@
                 </a>
 
                 @if (auth()->user()->role === 'admin')
-                <a href="{{ route('categories.index') }}"
-                   class="{{ request()->routeIs('categories.*') ? 'text-indigo-600' : 'text-gray-500' }}">
-                    Kategori
-                </a>
-                <a href="{{ route('products.index') }}"
-                   class="{{ request()->routeIs('products.*') ? 'text-indigo-600' : 'text-gray-500' }}">
-                    Produk
-                </a>
-                <a href="{{ route('report.sales') }}"
-                   class="{{ request()->routeIs('report.sales') ? 'text-indigo-600' : 'text-gray-500' }}">
-                    Laporan
-                </a>
+                    <a href="{{ route('categories.index') }}"
+                       class="{{ request()->routeIs('categories.*') ? 'text-indigo-600' : 'text-gray-500 hover:text-gray-700' }}">
+                        Kategori
+                    </a>
+                    <a href="{{ route('products.index') }}"
+                       class="{{ request()->routeIs('products.*') ? 'text-indigo-600' : 'text-gray-500 hover:text-gray-700' }}">
+                        Produk
+                    </a>
+                    <a href="{{ route('report.sales') }}"
+                       class="{{ request()->routeIs('report.sales') ? 'text-indigo-600' : 'text-gray-500 hover:text-gray-700' }}">
+                        Laporan
+                    </a>
                 @endif
 
                 <a href="{{ route('pos.index') }}"
-                   class="{{ request()->routeIs('pos.index') ? 'text-indigo-600' : 'text-gray-500' }}">
+                   class="{{ request()->routeIs('pos.index') ? 'text-indigo-600' : 'text-gray-500 hover:text-gray-700' }}">
                     Transaksi
                 </a>
+
+                @if (auth()->user()->role === 'kasir')
+                    <a href="{{ route('pos.history') }}"
+                       class="{{ request()->routeIs('pos.history') ? 'text-indigo-600' : 'text-gray-500 hover:text-gray-700' }}">
+                        Riwayat Transaksi Saya
+                    </a>
+                @endif
             </div>
 
             <div class="flex items-center space-x-4 text-sm">
-                <span class="text-gray-600">{{ auth()->user()->name }}</span>
+                <span class="text-gray-600 font-medium">{{ auth()->user()->name }}</span>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="text-gray-500 hover:text-red-600">Keluar</button>
+                    <button type="submit" class="text-gray-500 hover:text-red-600 font-medium transition duration-150 ease-in-out">
+                        Keluar
+                    </button>
                 </form>
             </div>
         </div>
