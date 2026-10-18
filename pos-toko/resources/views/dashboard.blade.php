@@ -9,20 +9,22 @@
                 <h3 class="text-lg font-semibold mb-2">Ringkasan Hari Ini</h3>
                 <p class="text-gray-600">Selamat datang, {{ auth()->user()->name }}.</p>
             </x-card>
+
+            <x-card>
+                <h3 class="text-lg font-semibold mb-2">Contoh Badge</h3>
+                <div class="flex flex-wrap gap-2">
+                    @isset($product)
+                        <x-badge :stock="$product->stock" />
+                        <x-badge :stock="$product->stock" class="shadow-sm uppercase">
+                            Stok Khusus: {{ $product->stock }}
+                        </x-badge>
+                    @else
+                        <x-badge :stock="25" />
+                    @endisset
+                    <x-badge :stock="0" />
+                    <x-badge :stock="5" />
+                </div>
+            </x-card>
         </div>
     </div>
 </x-app-layout>
-
-<x-badge :stock="$product->stock" />
-
-<x-badge :stock="0" />
-<x-badge :stock="5" />
-<x-badge :stock="25" />
-
-<x-badge status="Habis" />
-<x-badge status="Menipis" />
-<x-badge status="Aman" />
-
-<x-badge :stock="$product->stock" class="shadow-sm uppercase">
-    Stok Khusus: {{ $product->stock }}
-</x-badge>

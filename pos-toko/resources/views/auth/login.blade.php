@@ -7,7 +7,7 @@
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
     <div class="bg-white p-8 rounded-lg shadow-sm w-full max-w-sm">
-        <h1 class="text-x1 font-semibold mb-6 text-center">POS Barokah Mart</h1>
+        <h1 class="text-xl font-semibold mb-6 text-center">POS Barokah Mart</h1>
 
         @if ($errors->any())
             <div class="mb-4 p-3 bg-red-100 text-red-700 rounded-md text-sm">
